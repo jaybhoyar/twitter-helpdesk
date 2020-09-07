@@ -16,7 +16,8 @@ const userSchema = new Schema(
 		password: {
 			type: String,
 			required: true,
-		},
+    },
+    twitterHandleId: String,
 	},
 	{ timestamps: true }
 );

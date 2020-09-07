@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var passport = require("passport");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -27,6 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
@@ -51,7 +54,7 @@ app.use(function (err, req, res, next) {
 	// render the error page
 
 	res.status(err.status || 500);
-	res.json({ error: err.message });
+	res.send(err.message || err);
 });
 
 module.exports = app;
