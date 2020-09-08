@@ -4,6 +4,7 @@ import Home from "./views/common/Home";
 import Register from "./views/auth/Register";
 import Login from "./views/auth/Login";
 import "./index.css";
+import "semantic-ui-css/semantic.min.css";
 
 class App extends Component {
 	constructor(props) {
