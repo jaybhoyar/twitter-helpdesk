@@ -1,12 +1,34 @@
 .home-container {
-	padding: 150px 50px 50px 100px;
-	width: 100%;
+	padding: 150px 0;
+	max-width: 80%;
 	height: 100%;
+	margin: 0 auto;
 	border: 1px solid #000;
 	.header-container {
-		padding: 50px;
+		border: 1px solid rgb(29, 223, 55);
+		width: 100%;
 		display: flex;
 		justify-content: space-around;
+		.column-1 {
+			border: 1px solid rgb(211, 79, 160);
+			width: 70%;
+			display: flex;
+			justify-content: space-a;
+			align-items: center;
+			.main-topic-heading {
+				color: #000;
+			}
+			.search-bar {
+				.search-input {
+					border: 1px solid #000;
+				}
+			}
+		}
+	}
+	.main-container {
+		border: 1px solid rgb(29, 223, 55);
+    width: 100%;
+    
 	}
 	.chats-list {
 		border: 1px solid #000;
