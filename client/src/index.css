@@ -133,3 +133,7 @@ input {
 .alter-auth-button a {
 	color: rgb(41, 114, 231);
 }
+
+.auth-heading {
+	padding: 15px 0;
+}

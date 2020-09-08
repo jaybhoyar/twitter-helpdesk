@@ -28,7 +28,7 @@ class Login extends Component {
 			<div className="container-center">
 				<div className="text-center form-parent">
 					<form onSubmit={this.handleSubmit}>
-						<h1>Login</h1>
+						<h1 className="auth-heading">Login</h1>
 						<div className="form-content">
 							<input
 								name="username"
