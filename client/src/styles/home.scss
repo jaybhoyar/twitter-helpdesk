@@ -19,6 +19,7 @@
 				color: #000;
 				font-size: 2rem;
 				font-weight: 600;
+				letter-spacing: 1px;
 			}
 			.search-bar {
 				display: flex;
@@ -31,6 +32,7 @@
 				border: 1px solid rgb(190, 190, 190);
 				background-color: #fff;
 				input {
+					font-size: 0.9rem;
 					margin-left: 0.5rem;
 					border: none !important;
 					width: 8rem;
@@ -89,19 +91,50 @@
 		.row {
 			display: flex;
 			.column {
-				border: 1px solid #0cdb7b;
 				height: 100%;
 			}
 			.three-wide {
-				width: 22%;
+				width: 23%;
 				margin: 0 auto 0 0;
 			}
 			.eight-wide {
-				width: 50%;
+				width: 49%;
 			}
 			.four-wide {
 				width: 25%;
 			}
+		}
+	}
+}
+.tweet-item {
+	padding: 1.1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	margin-bottom: 1rem;
+	display: flex;
+	&:hover {
+		background-color: #f7f6f2;
+	}
+	.user-avatar {
+		width: 15%;
+		margin-right: auto;
+		img {
+			width: 1.8rem;
+			height: 1.8rem;
+			border-radius: 50%;
+		}
+	}
+	.tweet-body {
+		width: 78%;
+		.user-name {
+			font-size: 1rem;
+			color: #000;
+			margin-bottom: 0.7rem;
+		}
+		.tweet-text {
+			font-size: 0.9rem;
+			color: rgb(122, 122, 122);
+			line-height: 1.5rem !important;
 		}
 	}
 }

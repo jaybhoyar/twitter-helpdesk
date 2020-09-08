@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { BiSlider } from "react-icons/bi";
+import TweetItem from "../common/Tweet_item";
 import "../../styles/home.scss";
 
 class Home extends Component {
@@ -32,7 +33,12 @@ class Home extends Component {
 				</div>
 				<div className="main-container">
 					<div class="row">
-						<div class="three-wide column">1</div>
+						<div class="three-wide column">
+							<TweetItem />
+							<TweetItem />
+							<TweetItem />
+							<TweetItem />
+						</div>
 						<div class="eight-wide column">2</div>
 						<div class="four-wide column">3</div>
 					</div>
