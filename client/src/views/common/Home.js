@@ -13,16 +13,18 @@ class Home extends Component {
 						</div>
 					</div>
 					<div className="column-2">
-						<button className="stadium-button">Online</button>
+						<button className="stadium-button">
+							<div className="status-pointer"></div>
+							<p>Online</p>
+							<div className="dropdown-pointer"></div>
+						</button>
 					</div>
 				</div>
 				<div className="main-container">
-					<div className="ui grid">
-						<div class="row">
-							<div class="three-wide-column chats-list">1</div>
-							<div class="eight-wide-column chats-list">2</div>
-							<div class="four wide column chats-list">3</div>
-						</div>
+					<div class="row">
+						<div class="three-wide column">1</div>
+						<div class="eight-wide column">2</div>
+						<div class="four-wide column">3</div>
 					</div>
 				</div>
 			</div>
