@@ -6,25 +6,57 @@
 	border: 1px solid #000;
 	box-sizing: content-box;
 	.header-container {
+		margin: 0 0 2rem 0;
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
 		.column-1 {
-			border: 1px solid rgb(211, 79, 160);
-			width: 70%;
+			width: 60%;
 			display: flex;
-			justify-content: space-a;
 			align-items: center;
 			.main-topic-heading {
+				margin: 0 2rem 0 0;
 				color: #000;
+				font-size: 2rem;
+				font-weight: 600;
 			}
 			.search-bar {
-				.search-input {
+				display: flex;
+				align-items: center;
+				outline: none;
+				cursor: pointer;
+				margin: 0 2rem 0 0;
+				padding: 0.4rem 1.2rem;
+				border-radius: 2rem;
+				border: 1px solid rgb(190, 190, 190);
+				background-color: #fff;
+				input {
+					margin-left: 0.5rem;
+					border: none !important;
+					width: 8rem;
+					outline: none;
+				}
+			}
+			.filter-button {
+				display: flex;
+				align-items: center;
+				outline: none;
+				cursor: pointer;
+				margin: 0.8rem 0;
+				padding: 0.4rem 1.2rem;
+				border-radius: 2rem;
+				border: 1px solid #f7f6f2;
+				background-color: #f7f6f2;
+				p {
+					margin-left: 0.5rem;
+					color: #000;
+					font-size: 1rem;
+					letter-spacing: 0.5px;
 				}
 			}
 		}
 		.column-2 {
-			width: 30%;
+			width: 40%;
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
@@ -33,26 +65,22 @@
 				align-items: center;
 				outline: none;
 				cursor: pointer;
-				padding: 0.6rem 1.8rem;
+				padding: 0.4rem 1.8rem;
 				border-radius: 2rem;
 				border: 1px solid rgb(190, 190, 190);
 				background-color: #fff;
 				.status-pointer {
-					height: 0.5rem;
-					width: 0.5rem;
+					height: 0.7rem;
+					width: 0.7rem;
 					border-radius: 50%;
 					background-color: rgb(60, 184, 23);
-					margin-right: 0.5rem;
+					margin-right: 0.8rem;
 				}
 				p {
 					margin: 0;
 					font-size: 1rem;
+					margin-right: 0.5rem;
 				}
-				// .dropdown-pointer {
-				// 	padding: 0.3rem;
-				// 	border-radius: 50%;
-				// 	background-color: rgb(60, 184, 23);
-				// }
 			}
 		}
 	}

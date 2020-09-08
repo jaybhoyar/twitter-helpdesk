@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
+import { BiSlider } from "react-icons/bi";
 import "../../styles/home.scss";
 
 class Home extends Component {
@@ -9,13 +11,21 @@ class Home extends Component {
 					<div className="column-1">
 						<h1 className="main-topic-heading">Conversations</h1>
 						<div className="search-bar">
-							<input type="text" className="search-input" />
+							<IoIosSearch />
+							<input type="text" placeholder="Quick Search" />
+						</div>
+						<div className="filter-button">
+							<BiSlider style={{ color: "black" }} />
+							<p>Filter</p>
 						</div>
 					</div>
 					<div className="column-2">
 						<button className="stadium-button">
 							<div className="status-pointer"></div>
 							<p>Online</p>
+							<IoMdArrowDropdown
+								style={{ width: "20px", height: "20px" }}
+							/>
 							<div className="dropdown-pointer"></div>
 						</button>
 					</div>
