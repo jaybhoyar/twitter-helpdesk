@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { userRegister } from "../../state/actions/auth";
 
 class Register extends Component {
@@ -10,7 +10,7 @@ class Register extends Component {
 			name: "",
 			username: "",
 			password: "",
-			errorMsg: "",
+			errors: "",
 		};
 	}
 	handleChange = (e) => {
@@ -26,17 +26,14 @@ class Register extends Component {
 			password: this.state.password,
 		};
 		try {
-			let res = this.props.dispatch(userRegister({ user }));
-			console.log(res, "inside submit");
-			// if (!res) {
-			// 	return this.setState({
-			// 		errorMsg: <p>{"Something went wrong."}</p>,
-			// 	});
-			// }
-			// alert("Logged In Successfully");
-			// this.props.history.push("/login");
+			var res = this.props.dispatch(userRegister({ user }));
+			if (res.status === 200) {
+				console.log(res);
+			}
 		} catch (error) {
-			console.log("inside catch");
+			this.setState({
+				errors: <p>{error.error || "Something went wrong."}</p>,
+			});
 		}
 	};
 
@@ -80,8 +77,8 @@ class Register extends Component {
 		);
 	}
 }
-const mapStateToProps = (state) => {
-	return state;
-};
+const mapStateToProps = (state) => ({
+	errors: state.errors,
+});
 
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps)(withRouter(Register));

@@ -1,5 +1,6 @@
 import axios from "axios";
-const url = "http://localhost:3100/api/users";
+import { GET_ERRORS } from "./types";
+const url = "/api/users";
 
 const setTokenToAxios = (token) => {
 	axios.defaults.headers.common["authorization"] =
@@ -8,12 +9,10 @@ const setTokenToAxios = (token) => {
 
 setTokenToAxios();
 
-const userRegister = async (data) => {
-	console.log(data);
+const userRegister = async (user, dispatch) => {
 	try {
-		let res = await axios.post(`${url}/`, data);
-		console.log(res.data);
-		return res;
+		var res = await axios.post(`${url}/`, user);
+		return res.data;
 	} catch (error) {
 		return error;
 	}
