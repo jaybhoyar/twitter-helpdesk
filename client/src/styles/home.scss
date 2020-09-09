@@ -185,3 +185,15 @@
 	color: #000;
 	margin-bottom: 0.5rem;
 }
+
+.twitter-auth-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(29, 161, 242, 1) !important;
+	svg {
+		margin-left: 1rem;
+		width: 25px;
+		height: 25px;
+	}
+}

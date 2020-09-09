@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
+import { SiTwitter } from "react-icons/si";
+import "../../styles/home.scss";
 
 class TwitterAuth extends Component {
 	constructor(props) {
@@ -31,8 +33,12 @@ class TwitterAuth extends Component {
 							Connect to your Twitter Account
 						</h1>
 						<div className="form-content">
-							<button type="submit" className="button">
+							<button
+								type="submit"
+								className="button twitter-auth-button"
+							>
 								Login to Twitter
+								<SiTwitter />
 							</button>
 							<br />
 						</div>
