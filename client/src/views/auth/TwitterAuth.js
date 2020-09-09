@@ -33,13 +33,15 @@ class TwitterAuth extends Component {
 							Connect to your Twitter Account
 						</h1>
 						<div className="form-content">
-							<button
-								type="submit"
-								className="button twitter-auth-button"
-							>
-								Login to Twitter
-								<SiTwitter />
-							</button>
+							<Link to="/api/users/auth/twitter">
+								<button
+									type="submit"
+									className="button twitter-auth-button"
+								>
+									Login to Twitter
+									<SiTwitter />
+								</button>
+							</Link>
 							<br />
 						</div>
 					</form>

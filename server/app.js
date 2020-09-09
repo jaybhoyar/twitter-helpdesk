@@ -3,11 +3,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var passport = require("passport");
+var session = require("express-session");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var cors = require("cors");
 require("dotenv").config();
+require("./utils/twitter_auth");
 
 mongoose.connect(
 	process.env.DBURL,
@@ -31,9 +33,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+	session({
+		secret: "keyboard cat",
+		resave: true,
+		saveUninitialized: false,
+	})
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
 
@@ -57,7 +66,7 @@ app.use(function (err, req, res, next) {
 	// render the error page
 
 	res.status(err.status || 500);
-	res.send(err.message || err);
+	res.send({ error: err.message });
 });
 
 module.exports = app;

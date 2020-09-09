@@ -10,11 +10,10 @@ router.post("/login", userController.login);
 router.get("/auth/twitter", passport.authenticate("twitter"));
 
 router.get(
-	"/auth/twitter/callback",
-	passport.authenticate("twitter", { failureRedirect: "/login" }),
+	"/login/twitter/callback",
+	passport.authenticate("twitter", { failureRedirect: "/" }),
 	function (req, res) {
-		// Successful authentication, redirect home.
-		res.redirect("/");
+		res.redirect("/success");
 	}
 );
 
