@@ -7,7 +7,6 @@ var logger = require("morgan");
 var helmet = require("helmet");
 var expressStaticGzip = require("express-static-gzip");
 var mongoose = require("mongoose");
-<<<<<<< HEAD
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -29,15 +28,6 @@ mongoose.connect(
 	}
 );
 
-=======
-
-var indexRouter = require("./routes/index");
-var userRouter = require("./routes/user");
-var cors = require("cors");
-require("dotenv").config();
-require("./utils/passport");
-
->>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
 var app = express();
 app.use(cors());
 app.use(helmet());
@@ -77,21 +67,6 @@ app.use(
 );
 
 // fix depreciation warning.
-<<<<<<< HEAD
-=======
-mongoose.connect(
-	process.env.DBURL,
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-		useCreateIndex: true,
-	},
-	(err) => {
-		console.log(err ? err : "Connected to Database **");
-	}
-);
->>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
 
 // webpack
 if (process.env.NODE_ENV === "development") {
