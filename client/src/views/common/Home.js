@@ -33,13 +33,37 @@ class Home extends Component {
 				</div>
 				<div className="main-container">
 					<div class="row">
-						<div class="three-wide column">
+						<div class="three-wide">
+							<TweetItem />
+							<TweetItem />
+							<TweetItem />
 							<TweetItem />
 							<TweetItem />
 							<TweetItem />
 							<TweetItem />
 						</div>
-						<div class="eight-wide column">2</div>
+						<div class="eight-wide column">
+							<div className="chat-header">
+								<div className="user-info">
+									<div className="user-avatar">
+										<img
+											src="https://randomuser.me/api/portraits/men/97.jpg"
+											alt="test"
+										/>
+									</div>
+									<h3 className="user-name">Ninety Seven</h3>
+								</div>
+							</div>
+							<div className="reponse-container">
+								<div className="user-avatar">
+									<img
+										src="https://randomuser.me/api/portraits/men/97.jpg"
+										alt="test"
+									/>
+								</div>
+								<input type="text" placeholder="Reply..." />
+							</div>
+						</div>
 						<div class="four-wide column">3</div>
 					</div>
 				</div>

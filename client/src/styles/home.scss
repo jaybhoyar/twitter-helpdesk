@@ -1,10 +1,9 @@
 .home-container {
-	padding: 9.5rem 0;
-	max-width: 82%;
+	padding: 7rem 0;
+	max-width: 88%;
 	height: 100%;
 	margin: 0 auto;
-	border: 1px solid #000;
-	box-sizing: content-box;
+
 	.header-container {
 		margin: 0 0 2rem 0;
 		width: 100%;
@@ -90,24 +89,64 @@
 		width: 100%;
 		.row {
 			display: flex;
-			.column {
-				height: 100%;
-			}
 			.three-wide {
+				overflow: hidden;
 				width: 23%;
 				margin: 0 auto 0 0;
 			}
 			.eight-wide {
 				width: 49%;
+				border: 1px solid #ccc;
+				border-top-left-radius: 0.5rem;
+				border-bottom-left-radius: 0.5rem;
+				border-right: none;
+				position: relative;
+				.chat-header {
+					padding: 0.7rem 1.5rem;
+					border-bottom: 1px solid #ccc;
+					display: flex;
+					justify-content: flex-start;
+					.user-info {
+						width: 24%;
+						display: flex;
+						align-items: center;
+						.user-name {
+							margin-bottom: 0;
+						}
+					}
+				}
+				.reponse-container {
+					position: absolute;
+					left: 1rem;
+					bottom: 2rem;
+					display: flex;
+					justify-content: center;
+					.user-avatar {
+						width: auto;
+						margin-right: 2rem;
+					}
+					input {
+						font-family: inherit;
+						letter-spacing: 0.3px;
+						outline: none;
+						width: 32rem;
+						border: 1px solid #ccc;
+						border-radius: 0.5rem;
+						padding: 1rem 1.5rem;
+					}
+				}
 			}
 			.four-wide {
 				width: 25%;
+				border: 1px solid #ccc;
+				border-top-right-radius: 0.5rem;
+				border-bottom-right-radius: 0.5rem;
 			}
 		}
 	}
 }
 .tweet-item {
-	padding: 1.1rem;
+	padding: 1rem;
 	border: 1px solid #ccc;
 	border-radius: 0.5rem;
 	margin-bottom: 1rem;
@@ -115,26 +154,28 @@
 	&:hover {
 		background-color: #f7f6f2;
 	}
-	.user-avatar {
-		width: 15%;
-		margin-right: auto;
-		img {
-			width: 1.8rem;
-			height: 1.8rem;
-			border-radius: 50%;
-		}
-	}
+
 	.tweet-body {
 		width: 78%;
-		.user-name {
-			font-size: 1rem;
-			color: #000;
-			margin-bottom: 0.7rem;
-		}
+
 		.tweet-text {
-			font-size: 0.9rem;
+			font-size: 0.8rem;
 			color: rgb(122, 122, 122);
-			line-height: 1.5rem !important;
+			line-height: 1.3rem !important;
 		}
 	}
+}
+.user-avatar {
+	width: 15%;
+	margin-right: auto;
+	img {
+		width: 1.8rem;
+		height: 1.8rem;
+		border-radius: 50%;
+	}
+}
+.user-name {
+	font-size: 0.9rem;
+	color: #000;
+	margin-bottom: 0.5rem;
 }
