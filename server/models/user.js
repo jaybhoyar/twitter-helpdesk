@@ -4,7 +4,7 @@ const { hash, compare } = require("bcryptjs");
 
 const userSchema = new Schema(
 	{
-		username: {
+		email: {
 			type: String,
 			required: true,
 			unique: true,
@@ -16,8 +16,8 @@ const userSchema = new Schema(
 		password: {
 			type: String,
 			required: true,
-    },
-    twitterHandleId: String,
+		},
+		twitterHandleId: String,
 	},
 	{ timestamps: true }
 );

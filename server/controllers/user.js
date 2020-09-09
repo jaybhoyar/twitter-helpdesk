@@ -16,12 +16,12 @@ module.exports = {
 	login: async (req, res, next) => {
 		try {
 			var { user } = req.body;
-			if (!user || !user.username || !user.password) {
+			if (!user || !user.email || !user.password) {
 				return res.status(400).json({ message: "Wrong Input" });
 			}
-			var currentUser = await User.findOne({ username: user.username });
+			var currentUser = await User.findOne({ email: user.email });
 			if (!currentUser) {
-				return res.status(404).json({ message: "Invalid username" });
+				return res.status(404).json({ message: "Invalid email" });
 			}
 			var result = await currentUser.verifyPassword(user.password);
 			if (!result) {
