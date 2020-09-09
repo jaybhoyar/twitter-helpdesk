@@ -9,7 +9,7 @@ var expressStaticGzip = require("express-static-gzip");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var cors = require("cors");
-
+var getMentions = require("./routes/mentions");
 var indexRouter = require("./routes/index");
 var userRouter = require("./routes/user");
 
@@ -55,6 +55,19 @@ app.use(
 		saveUninitialized: false,
 	})
 );
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Methods", "DELETE, PUT");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+	if ("OPTIONS" == req.method) {
+		res.sendStatus(200);
+	} else {
+		next();
+	}
+});
 
 app.use(
 	"/dist/bundle",
@@ -85,6 +98,7 @@ if (process.env.NODE_ENV === "development") {
 	app.use(require("webpack-hot-middleware")(compiler));
 }
 app.use(passport.initialize());
+// setInterval(getMentions, 5000);
 // Route handler
 app.use("/api/users", userRouter); // api route handler
 app.use("/", indexRouter); // react handler

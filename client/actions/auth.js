@@ -49,22 +49,23 @@ const identifyUser = () => {
 		}
 	};
 };
-// const oauthLogin = () => {
-// 	return async (dispatch) => {
-// 		try {
-// 			setTokenToAxios();
-// 			var token = localStorage["auth-token"] || "";
-// 			console.log(token);
-// 			let user = await axios.get(`${url}/auth/twitter`);
-// 			dispatch({
-// 				type: "FETCH_CURRENT_USER_SUCCESS",
-// 				payload: user.data.user,
-// 			});
-// 			return true;
-// 		} catch (error) {
-// 			return error;
-// 		}
-// 	};
-// };
+const oauthLogin = (token) => {
+	return async (dispatch) => {
+		try {
+			setTokenToAxios(token);
+			// var token = localStorage["auth-token"] || "";
+			console.log(token, "token here --------------------------------");
 
-export { userRegister, userLogin, identifyUser };
+			let user = await axios.get(`${url}/auth/twitter`);
+			dispatch({
+				type: "FETCH_CURRENT_USER_SUCCESS",
+				payload: user.data.user,
+			});
+			return true;
+		} catch (error) {
+			return error;
+		}
+	};
+};
+
+export { userRegister, userLogin, identifyUser, oauthLogin };

@@ -12,8 +12,22 @@ passport.use(
 		},
 		function (token, tokenSecret, profile, cb) {
 			var details = profile._json;
-			console.log(details.id_str);
-			return cb(null, details.id_str);
+			User.findOne({ twitterHandleId: details.id_str }, (error, user) => {
+				console.log(details);
+				// if (user) {
+				// 	return cb(error, user);
+				// } else {
+				// 	var user = {
+				// 		name: details.screen_name,
+				// 		twitterHandleId: details.id_str,
+				// email: screen_name + "@gmail.com";
+				// 	};
+				// 	User.create(user, (err, user) => {
+				// 		return cb(error, user);
+				// 	});
+				// }
+			});
+			cb(null, profile);
 		}
 	)
 );

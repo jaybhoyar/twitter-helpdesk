@@ -9,26 +9,16 @@ router.post("/", userController.register);
 router.post("/login", userController.login);
 
 // auth.validateJwt
-router.get("/auth/twitter", passport.authenticate("twitter"));
+router.get("/auth/twitter", auth.validateJwt, passport.authenticate("twitter"));
 
 router.get(
 	"/login/twitter/callback",
 	passport.authenticate("twitter", {
-		failureRedirect: "/",
+		failureRedirect: "/failed",
 	}),
 	async function (req, res) {
 		console.log(req.user);
 		console.log(req.userId);
-		// User.findByIdAndUpdate(
-		// 	req.userId,
-		// 	{ twitterHandleId: details.id_str },
-		// 	{ new: true },
-		// 	(error, user) => {
-		// 		if (error) {
-		// 			return cb(error, user);
-		// 		}
-		// 	}
-		// );
 		res.redirect(`/`);
 	}
 );
