@@ -257,11 +257,18 @@ input {
 	border: 1px solid #fff;
 }
 
+.alter-auth-button {
+	margin-top: 1rem;
+}
 .alter-auth-button a {
 	color: rgb(41, 114, 231);
 }
 
 .auth-heading {
+	color: #000;
+	letter-spacing: 1px;
+	font-size: 2rem !important;
+	font-weight: bold;
 	padding: 15px 0;
 }
 

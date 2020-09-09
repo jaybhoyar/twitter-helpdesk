@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { userLogin } from "../../state/actions/auth";
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "",
+			email: "",
 			password: "",
+			errorMsg: "",
 		};
 	}
 	handleChange = (e) => {
@@ -14,13 +17,26 @@ class Login extends Component {
 			[e.target.name]: e.target.value,
 		});
 	};
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
 		const user = {
-			username: this.state.username,
+			email: this.state.email,
 			password: this.state.password,
 		};
-		console.log(user);
+		try {
+			let res = await this.props.dispatch(userLogin({ user }));
+			console.log(res, "inside submit");
+			if (!res) {
+				return this.setState({
+					errorMsg: <p>{"Something went wrong."}</p>,
+				});
+			}
+			this.props.history.push("/");
+		} catch (error) {
+			this.setState({
+				errorMsg: <p>{error.error || "Something went wrong."}</p>,
+			});
+		}
 	};
 
 	render() {
@@ -28,12 +44,14 @@ class Login extends Component {
 			<div className="container-center">
 				<div className="text-center form-parent">
 					<form onSubmit={this.handleSubmit}>
+						<h1>{this.state.errorMsg}</h1>
 						<h1 className="auth-heading">Login</h1>
 						<div className="form-content">
 							<input
-								name="username"
-								placeholder="Username"
-								value={this.state.username}
+								name="email"
+								type="email"
+								placeholder="Email"
+								value={this.state.email}
 								onChange={this.handleChange}
 							/>
 							<input
@@ -49,7 +67,8 @@ class Login extends Component {
 							<br />
 						</div>
 						<div className="alter-auth-button">
-							<Link to="/register">Register</Link>
+							Not Register yet?
+							<Link to="/register"> Register here</Link>
 						</div>
 					</form>
 				</div>
@@ -58,4 +77,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default connect()(Login);

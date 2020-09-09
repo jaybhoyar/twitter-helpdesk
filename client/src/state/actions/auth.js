@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GET_ERRORS } from "./types";
 const url = "/api/users";
 
 const setTokenToAxios = (token) => {
@@ -9,13 +8,31 @@ const setTokenToAxios = (token) => {
 
 setTokenToAxios();
 
-const userRegister = async (user, dispatch) => {
+const userRegister = async (user) => {
 	try {
-		var res = await axios.post(`${url}/`, user);
-		return res.data;
+		let res = await axios.post(`${url}/`, user);
+		console.log(res.data);
+		return res;
 	} catch (error) {
 		return error;
 	}
 };
+const userLogin = (user) => {
+	return async (dispatch) => {
+		try {
+			let res = await axios.post(`${url}/login`, user);
+			localStorage.setItem("auth-token", res.data.token);
+			setTokenToAxios(res.data.token);
+			dispatch({
+				type: "FETCH_CURRENT_USER_SUCCESS",
+				payload: res.data.user,
+			});
 
-export { userRegister };
+			return true;
+		} catch (error) {
+			return error;
+		}
+	};
+};
+
+export { userRegister, userLogin };

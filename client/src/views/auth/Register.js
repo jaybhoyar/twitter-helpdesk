@@ -8,9 +8,10 @@ class Register extends Component {
 		super(props);
 		this.state = {
 			name: "",
-			username: "",
+			email: "",
 			password: "",
-			errors: "",
+			successMsg: "",
+			errorMsg: "",
 		};
 	}
 	handleChange = (e) => {
@@ -22,19 +23,30 @@ class Register extends Component {
 		e.preventDefault();
 		const user = {
 			name: this.state.name,
-			username: this.state.username,
+			email: this.state.email,
 			password: this.state.password,
 		};
-		try {
-			var res = this.props.dispatch(userRegister({ user }));
-			if (res.status === 200) {
-				console.log(res);
+		setTimeout(async () => {
+			try {
+				var res = await userRegister({ user });
+				if (res.status === 200) {
+					this.setState({
+						successMsg: (
+							<p>
+								Signed up successfully.
+								<Link to="/login">Login here.</Link>
+							</p>
+						),
+						errorMsg: "",
+					});
+				}
+			} catch (error) {
+				this.setState({
+					successMsg: "",
+					errorMsg: <p>{error.error || "Something went wrong."}</p>,
+				});
 			}
-		} catch (error) {
-			this.setState({
-				errors: <p>{error.error || "Something went wrong."}</p>,
-			});
-		}
+		}, 3000);
 	};
 
 	render() {
@@ -42,19 +54,30 @@ class Register extends Component {
 			<div className="container-center">
 				<div className="text-center form-parent">
 					<form onSubmit={this.handleSubmit}>
+						<div style={{ background: "green", color: "white" }}>
+							{this.state.successMsg}
+						</div>
+						<div style={{ background: "red", color: "white" }}>
+							{this.state.errorMsg}
+						</div>
 						<h1 className="auth-heading">Register</h1>
 						<div className="form-content">
 							<input
+								type="text"
 								name="name"
-								placeholder="name"
+								placeholder="Name"
 								value={this.state.name}
 								onChange={this.handleChange}
+								required
+								autoFocus
 							/>
 							<input
-								name="username"
+								name="email"
+								type="email"
 								placeholder="Username"
-								value={this.state.username}
+								value={this.state.email}
 								onChange={this.handleChange}
+								required
 							/>
 							<input
 								type="password"
@@ -62,6 +85,7 @@ class Register extends Component {
 								placeholder="Password"
 								value={this.state.password}
 								onChange={this.handleChange}
+								required
 							/>
 							<button type="submit" className="button">
 								Register
@@ -69,7 +93,8 @@ class Register extends Component {
 							<br />
 						</div>
 						<div className="alter-auth-button">
-							<Link to="/login">Login</Link>
+							Already registered?
+							<Link to="/login"> Login here</Link>
 						</div>
 					</form>
 				</div>
@@ -77,8 +102,5 @@ class Register extends Component {
 		);
 	}
 }
-const mapStateToProps = (state) => ({
-	errors: state.errors,
-});
 
-export default connect(mapStateToProps)(withRouter(Register));
+export default Register;
