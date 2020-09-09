@@ -12,19 +12,8 @@ passport.use(
 		},
 		function (token, tokenSecret, profile, cb) {
 			var details = profile._json;
-			User.findByIdAndUpdate(
-				req.userId,
-				{ twitterHandleId: details.id_str },
-				{ new: true },
-				(error, user) => {
-					if (error) {
-						return cb(error, user);
-					}
-				}
-			);
-
-			console.log(details);
-			return cb(null, profile);
+			console.log(details.id_str);
+			return cb(null, details.id_str);
 		}
 	)
 );

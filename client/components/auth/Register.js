@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import { userRegister } from "../../state/actions/auth";
+import { userRegister } from "../../actions/auth";
 
 class Register extends Component {
 	constructor(props) {
@@ -31,14 +32,10 @@ class Register extends Component {
 				var res = await userRegister({ user });
 				if (res.status === 200) {
 					this.setState({
-						successMsg: (
-							<p>
-								Signed up successfully.
-								<Link to="/login">Login here.</Link>
-							</p>
-						),
+						successMsg: <p>Signed up successfully.</p>,
 						errorMsg: "",
 					});
+					this.props.history.push("/login");
 				}
 			} catch (error) {
 				this.setState({

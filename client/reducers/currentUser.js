@@ -1,34 +1,22 @@
-const initialState = {
-	user: null,
-	token: localStorage.getItem("authToken") || "",
-	isAuthInProgress: true,
+var intialState = {
+	userInfo: null,
+	isAuthReqInProgress: false,
 };
 
-function currentUser(state = initialState, action) {
+function currentUser(state = intialState, action) {
 	switch (action.type) {
-		case "USER_LOGIN_SUCCESS":
+		case "FETCH_CURRENT_USER_START":
 			return {
 				...state,
-				user: action.data.user,
-				isAuthInProgress: false,
+				isAuthReqInProgress: true,
+			};
+		case "FETCH_CURRENT_USER_SUCCESS":
+			return {
+				...state,
+				userInfo: action.payload,
+				isAuthReqInProgress: false,
 			};
 
-		case "USER_LOGIN_FAILED":
-			localStorage.clear();
-			return {
-				...state,
-				isAuthInProgress: false,
-				user: null,
-			};
-
-		case "LOG_OUT":
-		case "NO_TOKEN":
-			return {
-				...state,
-				user: null,
-				isAuthInProgress: false,
-				token: "",
-			};
 		default:
 			return state;
 	}

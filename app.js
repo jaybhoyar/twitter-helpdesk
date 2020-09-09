@@ -7,6 +7,7 @@ var logger = require("morgan");
 var helmet = require("helmet");
 var expressStaticGzip = require("express-static-gzip");
 var mongoose = require("mongoose");
+var passport = require("passport");
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -83,7 +84,7 @@ if (process.env.NODE_ENV === "development") {
 
 	app.use(require("webpack-hot-middleware")(compiler));
 }
-
+app.use(passport.initialize());
 // Route handler
 app.use("/api/users", userRouter); // api route handler
 app.use("/", indexRouter); // react handler

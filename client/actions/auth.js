@@ -34,22 +34,37 @@ const userLogin = (user) => {
 		}
 	};
 };
-const userTwitterAuth = () => {
+
+const identifyUser = () => {
 	return async (dispatch) => {
 		try {
-			let res = await axios.get(`${url}/auth/twitter`);
-			// localStorage.setItem("auth-token", res.data.token);
-			// setTokenToAxios(res.data.token);
-			console.log(res.data);
+			dispatch({ type: "FETCH_CURRENT_USER_START" });
+			let user = await axios.get(`${url}/`);
 			dispatch({
-				type: "FETCH_USER_TWITTER_ACCOUNT",
-				payload: res.data,
+				type: "FETCH_CURRENT_USER_SUCCESS",
+				payload: user.data.user,
 			});
-			return true;
 		} catch (error) {
 			return error;
 		}
 	};
 };
+// const oauthLogin = () => {
+// 	return async (dispatch) => {
+// 		try {
+// 			setTokenToAxios();
+// 			var token = localStorage["auth-token"] || "";
+// 			console.log(token);
+// 			let user = await axios.get(`${url}/auth/twitter`);
+// 			dispatch({
+// 				type: "FETCH_CURRENT_USER_SUCCESS",
+// 				payload: user.data.user,
+// 			});
+// 			return true;
+// 		} catch (error) {
+// 			return error;
+// 		}
+// 	};
+// };
 
-export { userRegister, userLogin, userTwitterAuth };
+export { userRegister, userLogin, identifyUser };

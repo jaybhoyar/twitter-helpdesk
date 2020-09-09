@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { BiSlider } from "react-icons/bi";
 import { GrAttachment } from "react-icons/gr";
-import TweetItem from "./common/Tweet_item";
+import TweetItem from "./Tweet_item";
 
 class Home extends Component {
 	render() {
