@@ -16,7 +16,11 @@ function currentUser(state = intialState, action) {
 				userInfo: action.payload,
 				isAuthReqInProgress: false,
 			};
-
+		case "FETCH_USER_TWITTER_ACCOUNT":
+			return {
+				...state,
+				userInfo: action.payload,
+			};
 		default:
 			return state;
 	}

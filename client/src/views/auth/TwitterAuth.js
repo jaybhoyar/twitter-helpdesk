@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+// import { Link, withRouter } from "react-router-dom";
 import { SiTwitter } from "react-icons/si";
+import { userTwitterAuth } from "../../state/actions/auth";
 import "../../styles/home.scss";
 
 class TwitterAuth extends Component {
@@ -14,10 +15,24 @@ class TwitterAuth extends Component {
 			[e.target.name]: e.target.value,
 		});
 	};
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
+		try {
+			let res = await this.props.dispatch(userTwitterAuth());
+			console.log(res, "inside submit");
+			// if (!res) {
+			// 	return this.setState({
+			// 		errorMsg: <p>{"Something went wrong."}</p>,
+			// 	});
+			// }
+			// this.props.history.push("/");
+		} catch (error) {
+			console.log(error);
+			// this.setState({
+			// 	errorMsg: <p>{error.error || "Something went wrong."}</p>,
+			// });
+		}
 	};
-
 	render() {
 		return (
 			<div className="container-center">
@@ -33,15 +48,13 @@ class TwitterAuth extends Component {
 							Connect to your Twitter Account
 						</h1>
 						<div className="form-content">
-							<Link to="/api/users/auth/twitter">
-								<button
-									type="submit"
-									className="button twitter-auth-button"
-								>
-									Login to Twitter
-									<SiTwitter />
-								</button>
-							</Link>
+							<button
+								type="submit"
+								className="button twitter-auth-button"
+							>
+								Login to Twitter
+								<SiTwitter />
+							</button>
 							<br />
 						</div>
 					</form>
@@ -51,4 +64,4 @@ class TwitterAuth extends Component {
 	}
 }
 
-export default TwitterAuth;
+export default connect()(TwitterAuth);

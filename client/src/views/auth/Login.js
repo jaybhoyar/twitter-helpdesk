@@ -31,7 +31,7 @@ class Login extends Component {
 					errorMsg: <p>{"Something went wrong."}</p>,
 				});
 			}
-			this.props.history.push("/");
+			this.props.history.push("/twitter-auth");
 		} catch (error) {
 			this.setState({
 				errorMsg: <p>{error.error || "Something went wrong."}</p>,

@@ -34,5 +34,22 @@ const userLogin = (user) => {
 		}
 	};
 };
+const userTwitterAuth = () => {
+	return async (dispatch) => {
+		try {
+			let res = await axios.get(`${url}/auth/twitter`);
+			// localStorage.setItem("auth-token", res.data.token);
+			// setTokenToAxios(res.data.token);
+			console.log(res.data);
+			dispatch({
+				type: "FETCH_USER_TWITTER_ACCOUNT",
+				payload: res.data,
+			});
+			return true;
+		} catch (error) {
+			return error;
+		}
+	};
+};
 
-export { userRegister, userLogin };
+export { userRegister, userLogin, userTwitterAuth };
