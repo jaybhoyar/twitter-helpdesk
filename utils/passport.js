@@ -8,7 +8,11 @@ passport.use(
 			consumerKey: process.env.TWITTER_CONSUMER_KEY,
 			consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
 			callbackURL:
+<<<<<<< HEAD
 				"http://localhost:3000/api/users/login/twitter/callback",
+=======
+				"http://localhost:3100/api/users/login/twitter/callback",
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
 		},
 		function (token, tokenSecret, profile, cb) {
 			var details = profile._json;

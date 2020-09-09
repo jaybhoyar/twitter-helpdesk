@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { BiSlider } from "react-icons/bi";
@@ -74,3 +75,17 @@ class Home extends Component {
 }
 
 export default Home;
+=======
+import React, { Component } from 'react';
+
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>React HomePage</h1>
+    </div>
+  );
+}
+
+export default HomePage;
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60

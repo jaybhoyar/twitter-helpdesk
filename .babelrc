@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"presets": [
 		"@babel/preset-env",
 		"@babel/preset-react",
@@ -12,3 +13,13 @@
 	],
 	"plugins": ["@babel/plugin-proposal-class-properties"]
 }
+=======
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60

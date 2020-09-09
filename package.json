@@ -11,7 +11,10 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
+<<<<<<< HEAD
     "core-js": "^3.6.5",
+=======
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
@@ -32,15 +35,22 @@
     "react-router-dom": "^5.2.0",
     "react-spinners": "^0.9.0",
     "redux": "^4.0.5",
+<<<<<<< HEAD
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.7",
     "twitter": "^1.7.1"
+=======
+    "redux-thunk": "^2.3.0"
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
+<<<<<<< HEAD
     "@babel/plugin-transform-runtime": "^7.11.5",
+=======
+>>>>>>> ff6009a4c7f47850f8c119fb038df1f519fc6b60
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
