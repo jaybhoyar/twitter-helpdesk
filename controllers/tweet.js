@@ -8,15 +8,20 @@ const SinceId = require("../models/sinceId");
 module.exports = {
 	getMentions: async (req, res, next) => {
 		try {
-			var sinceId = await SinceId.find({});
+			console.log("in mentions --------------------------------");
+			// var sinceId = await SinceId.find({});
 
-			var url = sinceId.length
-				? `statuses/mentions_timeline.json?since_id=${sinceId[0].last_since_id}`
-				: `statuses/mentions_timeline`;
+			// var url = sinceId.length
+			// 	? `statuses/mentions_timeline.json?since_id=${sinceId[0].last_since_id}`
+			// 	: `statuses/mentions_timeline`;
 
-			var res = await axios.get(
-				"https://api.twitter.com/1.1/statuses/mentions_timeline.json"
-			);
+			Twitter.get("statuses/mentions_timeline", {}, function (
+				err,
+				data,
+				response
+			) {
+				console.log(data);
+			});
 			// var latestSinceId = res.data.length && res.data[0].id_str;
 
 			// if (!sinceId.length) {
@@ -30,7 +35,7 @@ module.exports = {
 			// 		{ new: true }
 			// 	);
 			// }
-			console.log(res.data);
+			// console.log(res.data, "response ------");
 			// res.data.forEach(async (bookmark) => {
 			// 	var index = bookmark.text.split(" ").indexOf("addto");
 			// 	var category = bookmark.text.split(" ")[index + 1];
@@ -46,7 +51,7 @@ module.exports = {
 
 			// await Tweet.create(tweetBody);
 		} catch (error) {
-			console.log(error);
+			next(error);
 		}
 	},
 };

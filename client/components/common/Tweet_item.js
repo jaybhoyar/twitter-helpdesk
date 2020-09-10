@@ -10,7 +10,7 @@ export default function TweetItem(props) {
 				/>
 			</div>
 			<div className="tweet-body">
-				<h3 className="user-name">Ninety Seven</h3>
+				<h3 className="user-name">Mbah Enow</h3>
 				<div className="tweet-text">
 					Hello there! may I ask for favor
 				</div>

@@ -3,7 +3,7 @@ const url = "http://localhost:3000/api/tweets";
 
 const setTokenToAxios = (token) => {
 	axios.defaults.headers.common["authorization"] =
-		token || localStorage["login-token"] || "";
+		token || localStorage["auth-token"] || "";
 };
 
 setTokenToAxios();

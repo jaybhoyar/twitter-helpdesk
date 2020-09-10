@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { BiSlider } from "react-icons/bi";
-import { GrAttachment } from "react-icons/gr";
+import Chat from "./Chat";
 import TweetItem from "./Tweet_item";
 import { getTweets, getMentions } from "../../actions/tweets";
 
 class Home extends Component {
 	async componentDidMount() {
-		if (!localStorage["login-token"]) {
-			this.props.history.push("/login");
+		if (!localStorage["auth-token"]) {
+			this.props.history.push("/twitter-login");
 		} else {
 			this.props.dispatch(getMentions());
 			// console.log(mentionsList);
@@ -53,29 +53,7 @@ class Home extends Component {
 							<TweetItem />
 							<TweetItem />
 						</div>
-						<div class="eight-wide column">
-							<div className="chat-header">
-								<div className="user-info">
-									<div className="user-avatar">
-										<img
-											src="https://randomuser.me/api/portraits/men/97.jpg"
-											alt="test"
-										/>
-									</div>
-									<h3 className="user-name">Ninety Seven</h3>
-								</div>
-							</div>
-							<div className="reponse-container">
-								<div className="user-avatar">
-									<img
-										src="https://randomuser.me/api/portraits/men/97.jpg"
-										alt="test"
-									/>
-								</div>
-								<input type="text" placeholder="Reply..." />
-								<GrAttachment />
-							</div>
-						</div>
+						<Chat />
 						<div class="four-wide column"></div>
 					</div>
 				</div>
