@@ -4,20 +4,14 @@ const { hash, compare } = require("bcryptjs");
 
 const userSchema = new Schema(
 	{
-		email: {
-			type: String,
-			required: true,
-			match: /[^@]+@[^\.]+\..+/,
-			unique: true,
-		},
 		name: {
 			type: String,
 			required: true,
 		},
 		password: {
 			type: String,
-			required: true,
 		},
+		image: String,
 		twitterHandleId: String,
 	},
 	{ timestamps: true }

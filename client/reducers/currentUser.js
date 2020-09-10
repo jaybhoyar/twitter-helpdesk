@@ -1,6 +1,7 @@
 var intialState = {
 	userInfo: null,
 	isAuthReqInProgress: false,
+	failedToGetUser: false,
 };
 
 function currentUser(state = intialState, action) {
@@ -16,7 +17,13 @@ function currentUser(state = intialState, action) {
 				userInfo: action.payload,
 				isAuthReqInProgress: false,
 			};
-
+		case "FETCH_CURRENT_USER_FAILED":
+			return {
+				...state,
+				userInfo: action.payload,
+				isAuthReqInProgress: false,
+				failedToGetUser: true,
+			};
 		default:
 			return state;
 	}

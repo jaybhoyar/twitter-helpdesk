@@ -35,16 +35,19 @@ const userLogin = (user) => {
 	};
 };
 
-const identifyUser = () => {
+const identifyUser = (token) => {
 	return async (dispatch) => {
+		dispatch({ type: "FETCH_CURRENT_USER_START" });
+		setTokenToAxios(token);
 		try {
-			dispatch({ type: "FETCH_CURRENT_USER_START" });
-			let user = await axios.get(`${url}/`);
+			let res = await axios.get(`${url}/`);
 			dispatch({
 				type: "FETCH_CURRENT_USER_SUCCESS",
-				payload: user.data.user,
+				payload: res.data.user,
 			});
+			return user;
 		} catch (error) {
+			dispatch({ type: "FETCH_CURRENT_USER_FAILED" });
 			return error;
 		}
 	};
@@ -53,10 +56,9 @@ const oauthLogin = (token) => {
 	return async (dispatch) => {
 		try {
 			setTokenToAxios(token);
-			// var token = localStorage["auth-token"] || "";
-			console.log(token, "token here --------------------------------");
-
-			let user = await axios.get(`${url}/auth/twitter`);
+			let user = await axios.get(
+				`https://cors-anywhere.herokuapp.com/http://localhost:3000/api/users/auth/twitter`
+			);
 			dispatch({
 				type: "FETCH_CURRENT_USER_SUCCESS",
 				payload: user.data.user,

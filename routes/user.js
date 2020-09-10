@@ -9,17 +9,17 @@ router.post("/", userController.register);
 router.post("/login", userController.login);
 
 // auth.validateJwt
-router.get("/auth/twitter", auth.validateJwt, passport.authenticate("twitter"));
+
+router.get("/auth/twitter", passport.authenticate("twitter"));
 
 router.get(
 	"/login/twitter/callback",
 	passport.authenticate("twitter", {
-		failureRedirect: "/failed",
+		failureRedirect: "/",
 	}),
 	async function (req, res) {
-		console.log(req.user);
-		console.log(req.userId);
-		res.redirect(`/`);
+		var token = await auth.generateJwt(req.user);
+		res.redirect(`/oauth/${token}`);
 	}
 );
 

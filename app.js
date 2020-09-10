@@ -9,7 +9,7 @@ var expressStaticGzip = require("express-static-gzip");
 var mongoose = require("mongoose");
 var passport = require("passport");
 var cors = require("cors");
-var getMentions = require("./routes/mentions");
+var tweetRouter = require("./routes/tweet");
 var indexRouter = require("./routes/index");
 var userRouter = require("./routes/user");
 
@@ -101,6 +101,7 @@ app.use(passport.initialize());
 // setInterval(getMentions, 5000);
 // Route handler
 app.use("/api/users", userRouter); // api route handler
+app.use("/api/tweets", tweetRouter); // api route handler
 app.use("/", indexRouter); // react handler
 
 // catch 404 and forward to error handler

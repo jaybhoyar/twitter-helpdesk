@@ -1,11 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { IoIosSearch, IoMdArrowDropdown } from "react-icons/io";
 import { BiSlider } from "react-icons/bi";
 import { GrAttachment } from "react-icons/gr";
 import TweetItem from "./Tweet_item";
+import { getTweets, getMentions } from "../../actions/tweets";
 
 class Home extends Component {
+	async componentDidMount() {
+		if (!localStorage["login-token"]) {
+			this.props.history.push("/login");
+		} else {
+			this.props.dispatch(getMentions());
+			// console.log(mentionsList);
+		}
+	}
 	render() {
+		console.log();
 		return (
 			<div className="home-container">
 				<div className="header-container">
@@ -65,12 +76,17 @@ class Home extends Component {
 								<GrAttachment />
 							</div>
 						</div>
-						<div class="four-wide column">3</div>
+						<div class="four-wide column"></div>
 					</div>
 				</div>
 			</div>
 		);
 	}
 }
+function mapStateToProps(state) {
+	return {
+		mentionsList: state.mentionsList,
+	};
+}
 
-export default Home;
+export default connect(mapStateToProps)(Home);

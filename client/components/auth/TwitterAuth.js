@@ -12,40 +12,40 @@ class TwitterAuth extends Component {
 			errorMsg: "",
 		};
 	}
-	handleSubmit = async (e) => {
-		e.preventDefault();
-		var token = localStorage["auth-token"];
-		try {
-			let res = await this.props.dispatch(oauthLogin(token));
-			if (!res) {
-				return this.setState({
-					errorMsg: <p>{"Something went wrong."}</p>,
-				});
-			}
-			// this.props.history.push("/oauth-twitter");
-		} catch (error) {
-			this.setState({
-				errorMsg: <p>{error.error || "Something went wrong."}</p>,
-			});
-		}
-	};
+	// handleSubmit = async (e) => {
+	// 	e.preventDefault();
+	// 	var token = localStorage["auth-token"];
+	// 	try {
+	// 		let res = await this.props.dispatch(oauthLogin(token));
+	// 		if (!res) {
+	// 			return this.setState({
+	// 				errorMsg: <p>{"Something went wrong."}</p>,
+	// 			});
+	// 		}
+	// 		// this.props.history.push("/oauth-twitter");
+	// 	} catch (error) {
+	// 		this.setState({
+	// 			errorMsg: <p>{error.error || "Something went wrong."}</p>,
+	// 		});
+	// 	}
+	// };
 
 	render() {
 		return (
 			<div className="container-center">
 				<div className="text-center form-parent">
-					<form onSubmit={this.handleSubmit}>
+					<form>
 						<h1 className="auth-heading">
 							Connect your Twitter Account
 						</h1>
 						<div className="form-content">
-							<button
+							<a
 								className="button twitter-auth-button"
-								type="submit"
+								href="/api/users/auth/twitter"
 							>
 								Login to Twitter
 								<SiTwitter />
-							</button>
+							</a>
 							<br />
 						</div>
 					</form>

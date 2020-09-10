@@ -1,17 +1,22 @@
 import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { connect } from "react-redux";
-import getUserInfo from "../../actions/auth";
+import { identifyUser } from "../../actions/auth";
 class Token extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
 	}
-	async componentDidMount() {
-		var { token } = this.props.match.params;
-		localStorage.setItem("login-token", token);
-		var token = await this.props.dispatch(getUserInfo(token));
-		if (token.status) {
-			this.props.history.push("/home");
+	componentDidMount() {
+		try {
+			var { token } = this.props.match.params;
+			localStorage.setItem("auth-token", token);
+			if (localStorage["auth-token"]) {
+				this.props.dispatch(identifyUser());
+				this.props.history.push("/");
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	}
 	render() {

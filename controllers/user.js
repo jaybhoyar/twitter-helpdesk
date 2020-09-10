@@ -38,7 +38,7 @@ module.exports = {
 			var userId = req.userId;
 			var user = await User.findById(userId);
 			if (!user) {
-				res.status(404).send({ massage: "User not found" });
+				res.status(404).send({ message: "User not found" });
 			}
 			res.send({ user });
 		} catch (error) {

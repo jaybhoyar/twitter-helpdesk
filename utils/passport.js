@@ -13,21 +13,19 @@ passport.use(
 		function (token, tokenSecret, profile, cb) {
 			var details = profile._json;
 			User.findOne({ twitterHandleId: details.id_str }, (error, user) => {
-				console.log(details);
-				// if (user) {
-				// 	return cb(error, user);
-				// } else {
-				// 	var user = {
-				// 		name: details.screen_name,
-				// 		twitterHandleId: details.id_str,
-				// email: screen_name + "@gmail.com";
-				// 	};
-				// 	User.create(user, (err, user) => {
-				// 		return cb(error, user);
-				// 	});
-				// }
+				if (user) {
+					return cb(error, user);
+				} else {
+					var user = {
+						name: details.screen_name,
+						twitterHandleId: details.id_str,
+						image: details.profile_image_url_https,
+					};
+					User.create(user, (error, user) => {
+						return cb(error, user);
+					});
+				}
 			});
-			cb(null, profile);
 		}
 	)
 );
@@ -37,5 +35,7 @@ passport.serializeUser(function (user, cb) {
 });
 
 passport.deserializeUser(function (obj, cb) {
-	cb(null, obj);
+	User.findById(id, function (err, user) {
+		done(err, user);
+	});
 });
