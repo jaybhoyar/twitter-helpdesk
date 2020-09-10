@@ -24,8 +24,8 @@ class App extends Component {
 				<Route exact path="/oauth/:token" component={Token} />
 				<Route exact path="/twitter-login" component={TwitterAuth} />
 				<Route path="*" component={TwitterAuth} />
-				{/* <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} /> */}
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/register" component={Register} />
 			</Switch>
 		);
 	}

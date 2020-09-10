@@ -7,6 +7,10 @@ import TweetItem from "./Tweet_item";
 import { getTweets, getMentions } from "../../actions/tweets";
 
 class Home extends Component {
+	handleLogout = () => {
+		localStorage.clear();
+		this.props.history.push("/twitter-login");
+	};
 	async componentDidMount() {
 		if (!localStorage["auth-token"]) {
 			this.props.history.push("/twitter-login");
@@ -32,12 +36,11 @@ class Home extends Component {
 						</div>
 					</div>
 					<div className="column-2">
-						<button className="stadium-button">
-							<div className="status-pointer"></div>
-							<p>Online</p>
-							<IoMdArrowDropdown
-								style={{ width: "20px", height: "20px" }}
-							/>
+						<button
+							className="stadium-button"
+							onClick={this.handleLogout}
+						>
+							<p>logout</p>
 							<div className="dropdown-pointer"></div>
 						</button>
 					</div>
