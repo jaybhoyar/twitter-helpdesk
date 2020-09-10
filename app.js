@@ -17,7 +17,8 @@ require("dotenv").config();
 require("./utils/passport");
 
 mongoose.connect(
-	process.env.DBURL,
+	"mongodb+srv://client123:client@123@main.uhrxq.mongodb.net/test?retryWrites=true&w=majority" ||
+		process.env.DBURL,
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
